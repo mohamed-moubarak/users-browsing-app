@@ -14,3 +14,10 @@ export type UserModel = {
   lastName: string;
   picture: string;
 };
+
+export type FetchUsersResponse = {
+  data: Array<UserModel>;
+  limit: number;
+  page: number;
+  total: number;
+};

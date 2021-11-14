@@ -1,11 +1,11 @@
 import { useFetcher } from "../../utils/useFetcher";
 import { FetcherResponse } from "../../types";
-import { UserModel } from "./types";
+import { FetchUsersResponse } from "./types";
 
 type UseUsersListType = (variables: {
   page?: number;
   limit?: number;
-}) => FetcherResponse<Array<UserModel>, any>;
+}) => FetcherResponse<FetchUsersResponse, any>;
 
 const useUsersList: UseUsersListType = ({ page = 0, limit = 10 }) => {
     const requestHeaders = {'app-id' : process.env.REACT_APP_DUMMYAPI_APP_ID as string};
