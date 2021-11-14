@@ -8,7 +8,8 @@ type UseUsersListType = (variables: {
 }) => FetcherResponse<FetchUsersResponse, any>;
 
 const useUsersList: UseUsersListType = ({ page = 0, limit = 10 }) => {
-    const requestHeaders = {'app-id' : process.env.REACT_APP_DUMMYAPI_APP_ID as string};
+  const requestHeaders = {'app-id' : process.env.REACT_APP_DUMMYAPI_APP_ID as string};
+  
   return useFetcher({
     url: `https://dummyapi.io/data/v1/user?page=${page}&limit=${limit}`,
     requestHeaders
