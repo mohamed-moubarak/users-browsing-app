@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Button, Grid, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 import { useUsersList } from "../../service/hooks/user";
-import { Grid, Typography } from "@mui/material";
 import { UserModel } from "../../service/hooks/user/types";
 import { StyledPageWrapper } from "./../../common/styles";
 import UserCard from "../../components/UserCard";
 import UserCardShimmer from "../../components/UserCard/shimmer";
+import { CustomizedLinkExtender } from "./style";
 
 const HomePage: React.FC = () => {
  const [users, setUsers] = useState<Array<UserModel>>();
@@ -21,27 +23,35 @@ const HomePage: React.FC = () => {
     Users
    </Typography>
 
-   <Grid container spacing={3} p={2}>
-    {isLoading && Array.from(Array(24).keys()).map((_, i) => (
-     <Grid item key={i} xs={12} md={6} lg={4}>
-      <UserCardShimmer />
-     </Grid>
-    ))}
+   <CustomizedLinkExtender to={`/users/add`} style={{ marginLeft: "auto" }}>
+    <Button variant="outlined" startIcon={<AddIcon />}>
+     Add new User
+    </Button>
+   </CustomizedLinkExtender>
 
-    {!isLoading && users?.map((user) => {
-     const { id, picture, title, firstName, lastName } = user;
-     return (
-      <Grid item key={id} xs={12} md={6} lg={4}>
-       <UserCard
-        id={id}
-        picture={picture}
-        title={title}
-        firstName={firstName}
-        lastName={lastName}
-       />
+   <Grid container spacing={3} pt={2}>
+    {isLoading &&
+     Array.from(Array(24).keys()).map((_, i) => (
+      <Grid item key={i} xs={12} md={6} lg={4}>
+       <UserCardShimmer />
       </Grid>
-     );
-    })}
+     ))}
+
+    {!isLoading &&
+     users?.map((user) => {
+      const { id, picture, title, firstName, lastName } = user;
+      return (
+       <Grid item key={id} xs={12} md={6} lg={4}>
+        <UserCard
+         id={id}
+         picture={picture}
+         title={title}
+         firstName={firstName}
+         lastName={lastName}
+        />
+       </Grid>
+      );
+     })}
    </Grid>
   </StyledPageWrapper>
  );
