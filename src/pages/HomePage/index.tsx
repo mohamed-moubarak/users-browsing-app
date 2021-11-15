@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useUsersList } from "../../service/hooks/user";
 import { Grid, Typography } from "@mui/material";
 import { UserModel } from "../../service/hooks/user/types";
-import { StyledTitleWrapper } from "./style";
+import { StyledPageWrapper } from "./../../common/styles";
 import UserCard from "../../components/UserCard";
 import UserCardShimmer from "../../components/UserCard/shimmer";
 
@@ -17,12 +17,10 @@ const HomePage: React.FC = () => {
  }, [data]);
 
  return (
-  <>
-   <StyledTitleWrapper>
+  <StyledPageWrapper>
     <Typography variant="h2" mt={2} mx="auto">
      Users
     </Typography>
-   </StyledTitleWrapper>
 
    <Grid container spacing={3} p={2}>
     {users?.map((user) => {
@@ -44,7 +42,7 @@ const HomePage: React.FC = () => {
      );
     })}
    </Grid>
-  </>
+  </StyledPageWrapper>
  );
 };
 
