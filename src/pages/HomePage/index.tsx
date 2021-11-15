@@ -14,32 +14,34 @@ const HomePage: React.FC = () => {
 
  useEffect(() => {
   setUsers(data?.data);
-  console.log(data);
  }, [data]);
 
  return (
   <>
-  <StyledTitleWrapper>
-    <Typography variant="h2" mt={2} mx="auto">Users</Typography>
+   <StyledTitleWrapper>
+    <Typography variant="h2" mt={2} mx="auto">
+     Users
+    </Typography>
    </StyledTitleWrapper>
 
    <Grid container spacing={3} p={2}>
     {users?.map((user) => {
-    const { picture, title, firstName, lastName } = user;
-    return (
-     <Grid item key={user.id} xs={12} md={6} lg={4}>
-      {isLoading ? (
-       <UserCardShimmer />
-      ) : (
-       <UserCard
-        picture={picture}
-        title={title}
-        firstName={firstName}
-        lastName={lastName}
-       />
-      )}
-     </Grid>
-    );
+     const { id, picture, title, firstName, lastName } = user;
+     return (
+      <Grid item key={id} xs={12} md={6} lg={4}>
+       {isLoading ? (
+        <UserCardShimmer />
+       ) : (
+        <UserCard
+         id={id}
+         picture={picture}
+         title={title}
+         firstName={firstName}
+         lastName={lastName}
+        />
+       )}
+      </Grid>
+     );
     })}
    </Grid>
   </>

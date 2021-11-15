@@ -1,16 +1,16 @@
-import React from 'react';
-import { BrowserRouter } from "react-router-dom";
-import ReactDOM from 'react-dom';
-import App from './common/components/App';
-import reportWebVitals from './reportWebVitals';
-import { GlobalStyle } from './common/styles';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import App from "./common/components/App";
+import reportWebVitals from "./reportWebVitals";
+import { GlobalStyle } from "./common/styles";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <GlobalStyle />
-    <App />
-    </BrowserRouter>,
-  document.getElementById('root')
+ <Router>
+  <App />
+ </Router>,
+ document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
