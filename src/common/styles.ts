@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -15,9 +16,15 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const StyledPageWrapper = styled.div`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+ margin: 20px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+`;
+
+export const CustomizedLink = styled(Link)`
+ text-decoration: inherit;
+ color: inherit;
+ cursor: auto;
 `;

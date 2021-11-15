@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Avatar, CardActionArea } from "@mui/material";
 
-import { CustomizedCardHeader, CustomizedLink } from "./style";
+import { CustomizedCardHeader } from "./style";
 import { UserModel } from "../../service/hooks/user/types";
+import { CustomizedLink } from "../../common/styles";
 
 const UserCard: React.FC<Partial<UserModel>> = ({
  id,

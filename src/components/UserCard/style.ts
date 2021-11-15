@@ -7,9 +7,3 @@ export const CustomizedCardHeader = styled(CardHeader)`
         text-transform: capitalize;
     }
 `;
-
-export const CustomizedLink = styled(Link)`
-    text-decoration: inherit;
-    color: inherit;
-    cursor: auto;
-`;
