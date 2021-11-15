@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const CustomizedCardHeader = styled(CardHeader)`
     .MuiCardHeader-title {
-    text-transform: capitalize;
+        text-transform: capitalize;
     }
 `;
 

@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const StyledPageWrapper = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
