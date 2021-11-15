@@ -1,18 +1,4 @@
-enum UserTitle {
- MR = "mr",
- MS = "ms",
- MRS = "mrs",
- MISS = "miss",
- DR = "dr",
- EMPTY = "",
-}
-
-enum UserGender {
- MALE = "male",
- FEMALE = "female",
- OTHER = "other",
- EMPTY = "",
-}
+import { UserGender, UserTitle, Location } from "../../../common/types";
 
 export type UserModel = {
  id: string;
@@ -27,14 +13,6 @@ export type FetchUsersResponse = {
  limit: number;
  page: number;
  total: number;
-};
-
-export type Location = {
- street: string;
- city: string;
- state: string;
- country: string;
- timezone: string;
 };
 
 export type UserDetailsModel = {
