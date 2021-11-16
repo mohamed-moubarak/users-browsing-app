@@ -21,3 +21,9 @@ export type Location = {
  country: string;
  timezone: string;
 };
+
+export type UserCreationPayload = {
+ firstName: string;
+ lastName: string;
+ email: string;
+};

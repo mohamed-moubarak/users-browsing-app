@@ -3,19 +3,31 @@ import { Box, Button, TextField, Card } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useForm } from "react-hook-form";
 
+import createNewUser from "../../service/utils/createNewUser";
 import {
  FormFieldWrapper,
  StyledErrorMessage,
  StyledNameWrapper,
 } from "./style";
+import { UserCreationPayload } from "../../common/types";
 
 const UserCreationForm: React.FC = () => {
  const {
   register,
   handleSubmit,
   formState: { errors },
+  reset,
  } = useForm();
- const onSubmit = (data: any) => console.log(data);
+
+ const onSubmit = async (data: UserCreationPayload) => {
+  const response = await createNewUser(data);
+  if (!!response) {
+   alert("User created successfully");
+   reset();
+  } else {
+   alert("There was a problem creating a new user");
+  }
+ };
 
  return (
   <Box
