@@ -30,19 +30,19 @@ const UserDetailsPage: React.FC<Partial<UserDetailsModel>> = ({
    />
    <CardContent sx={{ padding: 0 }}>
     <CapitalizedTypography variant="h6">
-     {`${title} ${firstName} ${lastName}`}
+     {`${title || ''} ${firstName} ${lastName}`}
     </CapitalizedTypography>
 
-    <CapitalizedTypography variant="h6">Gender: {gender}</CapitalizedTypography>
+    {gender && <CapitalizedTypography variant="h6">Gender: {gender}</CapitalizedTypography>}
     {dateOfBirth && (
      <Typography variant="h6">Date of Birth: {formattedDateOfBirth}</Typography>
     )}
     <Typography variant="h6">Email: {email}</Typography>
-    <Typography variant="h6">Phone: {phone}</Typography>
+    {phone && <Typography variant="h6">Phone: {phone}</Typography>}
     <Typography variant="h6">
      Registered Date: {formattedRegisterDate}
     </Typography>
-    <Typography variant="h6">Address: {formattedAddress}</Typography>
+    {formattedAddress && <Typography variant="h6">Address: {formattedAddress}</Typography>}
    </CardContent>
   </Card>
  );
