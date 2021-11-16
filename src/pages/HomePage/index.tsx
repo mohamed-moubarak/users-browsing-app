@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Pagination, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
 import { useUsersList } from "../../service/hooks/user";
@@ -10,12 +10,20 @@ import UserCardShimmer from "../../components/UserCard/shimmer";
 import { CustomizedLinkExtender } from "./style";
 
 const HomePage: React.FC = () => {
+const [page, setPage] = React.useState(0);
  const [users, setUsers] = useState<Array<UserModel>>();
- const { data, isLoading } = useUsersList({ page: 1, limit: 24 });
+ const { data, isLoading } = useUsersList({ page, limit: 32 });
 
  useEffect(() => {
   setUsers(data?.data);
  }, [data]);
+
+ const {limit, total} = data || {};
+ const pagesCount = limit && total && Math.ceil(total/limit);
+
+ const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value - 1);
+  };
 
  return (
   <StyledPageWrapper>
@@ -32,7 +40,7 @@ const HomePage: React.FC = () => {
    <Grid container spacing={3} pt={2}>
     {isLoading &&
      Array.from(Array(24).keys()).map((_, i) => (
-      <Grid item key={i} xs={12} md={6} lg={4}>
+      <Grid item key={i} xs={12} md={6} lg={3}>
        <UserCardShimmer />
       </Grid>
      ))}
@@ -41,7 +49,7 @@ const HomePage: React.FC = () => {
      users?.map((user) => {
       const { id, picture, title, firstName, lastName } = user;
       return (
-       <Grid item key={id} xs={12} md={6} lg={4}>
+       <Grid item key={id} xs={12} md={6} lg={3}>
         <UserCard
          id={id}
          picture={picture}
@@ -53,6 +61,7 @@ const HomePage: React.FC = () => {
       );
      })}
    </Grid>
+   {pagesCount && <Pagination count={pagesCount} page={page + 1} onChange={handlePageChange} sx={{ my: 2 }} />}
   </StyledPageWrapper>
  );
 };

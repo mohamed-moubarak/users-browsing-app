@@ -17,7 +17,7 @@ const UserCard: React.FC<Partial<UserModel>> = ({
    <CardActionArea>
     <CustomizedCardHeader
      avatar={<Avatar src={picture} aria-label="user-picture"></Avatar>}
-     title={`${title} ${firstName} ${lastName}`}
+     title={`${title || ''} ${firstName} ${lastName}`}
     />
    </CardActionArea>
   </CustomizedLink>
